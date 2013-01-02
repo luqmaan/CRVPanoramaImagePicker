@@ -18,6 +18,7 @@
 		EC97C89B1694B850004E3304 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC97C89A1694B850004E3304 /* Default-568h@2x.png */; };
 		EC97C89E1694B850004E3304 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC97C89C1694B850004E3304 /* MainStoryboard.storyboard */; };
 		EC97C8A11694B850004E3304 /* CRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97C8A01694B850004E3304 /* CRViewController.m */; };
+		EC97C8A81694BA03004E3304 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97C8A71694BA03004E3304 /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		EC97C89D1694B850004E3304 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		EC97C89F1694B850004E3304 /* CRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRViewController.h; sourceTree = "<group>"; };
 		EC97C8A01694B850004E3304 /* CRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CRViewController.m; sourceTree = "<group>"; };
+		EC97C8A71694BA03004E3304 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC97C8A81694BA03004E3304 /* AssetsLibrary.framework in Frameworks */,
 				EC97C8851694B850004E3304 /* UIKit.framework in Frameworks */,
 				EC97C8871694B850004E3304 /* Foundation.framework in Frameworks */,
 				EC97C8891694B850004E3304 /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +59,7 @@
 		EC97C8751694B850004E3304 = {
 			isa = PBXGroup;
 			children = (
+				EC97C8A71694BA03004E3304 /* AssetsLibrary.framework */,
 				EC97C88A1694B850004E3304 /* TestAssetLibrary */,
 				EC97C8831694B850004E3304 /* Frameworks */,
 				EC97C8811694B850004E3304 /* Products */,

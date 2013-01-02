@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface CRViewController : UIViewController
+
+@property (strong, nonatomic) ALAssetsLibrary *library;
+@property (strong, nonatomic) NSMutableDictionary *assetsGroupById;
 
 @end
