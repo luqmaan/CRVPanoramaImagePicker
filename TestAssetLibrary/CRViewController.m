@@ -14,6 +14,8 @@
 
 @implementation CRViewController
 
+@synthesize scrollViewContentSize;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -22,11 +24,11 @@
     
     CRFindPanoramaImages *panoramaImageFinder = [[CRFindPanoramaImages alloc] init];
     
+    scrollViewContentSize = [[UIScreen mainScreen] bounds].size;
+        
     __block NSInteger top = 0;
     
     [panoramaImageFinder findPanoramaImagesAndPerformCallback:^(ALAsset *panoramaImageRef) {
-        
-        NSLog(@"%p", panoramaImageRef);
         
         /*  The call to get the image out of the defaultRepresentation is very slow.
             Fast: [panoramaImageRef aspectRatioThumbnail]
@@ -37,12 +39,10 @@
 
         UIImageView *imageView = [[UIImageView alloc] initWithImage:thumb];
         
-        CGFloat viewWidth = [[UIScreen mainScreen] bounds].size.width  / 2;
+        CGFloat viewWidth = [[UIScreen mainScreen] bounds].size.width;
         CGSize dimensions = [[panoramaImageRef defaultRepresentation] dimensions];
         CGFloat aspectRatio = dimensions.height / dimensions.width ;
         CGFloat height = aspectRatio * viewWidth;
-        
-        NSLog(@"aspectRatio: %f", aspectRatio);
         
         CGRect frame = CGRectMake(0, top, viewWidth, height);
         
@@ -51,7 +51,11 @@
         [imageView setFrame:frame];
         [[self view] addSubview:imageView];
         
+
         top += height;
+        scrollViewContentSize.height = top;
+        [[self scrollView] setContentSize:scrollViewContentSize];
+        
         
     }];
 

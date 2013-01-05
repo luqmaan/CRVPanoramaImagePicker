@@ -63,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				EC97C8A71694BA03004E3304 /* AssetsLibrary.framework */,
-				EC97C88A1694B850004E3304 /* TestAssetLibrary */,
+				EC97C88A1694B850004E3304 /* PanoramaImagePicker */,
 				EC97C8831694B850004E3304 /* Frameworks */,
 				EC97C8811694B850004E3304 /* Products */,
 			);
@@ -87,7 +87,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EC97C88A1694B850004E3304 /* TestAssetLibrary */ = {
+		EC97C88A1694B850004E3304 /* PanoramaImagePicker */ = {
 			isa = PBXGroup;
 			children = (
 				EC97C8931694B850004E3304 /* CRAppDelegate.h */,
@@ -99,6 +99,7 @@
 				C127C31F1698AD0D00A8EC44 /* CRFindPanoramaImages.h */,
 				C127C3201698AD0D00A8EC44 /* CRFindPanoramaImages.m */,
 			);
+			name = PanoramaImagePicker;
 			path = TestAssetLibrary;
 			sourceTree = "<group>";
 		};

@@ -11,5 +11,8 @@
 
 @interface CRViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (nonatomic) CGSize scrollViewContentSize;
 
 @end
