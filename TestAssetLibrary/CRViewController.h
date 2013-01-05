@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AssetsLibrary/AssetsLibrary.h>
+#import "CRFindPanoramaImages.h"
 
 @interface CRViewController : UIViewController
 
-@property (strong, nonatomic) ALAssetsLibrary *library;
-@property (strong, nonatomic) NSMutableDictionary *assetsGroupById;
-@property (strong, nonatomic) ALAssetsGroup *panoramaPhotos;
 
 @end

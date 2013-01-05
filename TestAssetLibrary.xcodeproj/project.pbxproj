@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C127C3211698AD0D00A8EC44 /* CRFindPanoramaImages.m in Sources */ = {isa = PBXBuildFile; fileRef = C127C3201698AD0D00A8EC44 /* CRFindPanoramaImages.m */; };
 		EC97C8851694B850004E3304 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97C8841694B850004E3304 /* UIKit.framework */; };
 		EC97C8871694B850004E3304 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97C8861694B850004E3304 /* Foundation.framework */; };
 		EC97C8891694B850004E3304 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97C8881694B850004E3304 /* CoreGraphics.framework */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C127C31F1698AD0D00A8EC44 /* CRFindPanoramaImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFindPanoramaImages.h; sourceTree = "<group>"; };
+		C127C3201698AD0D00A8EC44 /* CRFindPanoramaImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRFindPanoramaImages.m; sourceTree = "<group>"; };
 		EC97C8801694B850004E3304 /* TestAssetLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAssetLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC97C8841694B850004E3304 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EC97C8861694B850004E3304 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,6 +96,8 @@
 				EC97C89F1694B850004E3304 /* CRViewController.h */,
 				EC97C8A01694B850004E3304 /* CRViewController.m */,
 				EC97C88B1694B850004E3304 /* Supporting Files */,
+				C127C31F1698AD0D00A8EC44 /* CRFindPanoramaImages.h */,
+				C127C3201698AD0D00A8EC44 /* CRFindPanoramaImages.m */,
 			);
 			path = TestAssetLibrary;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				EC97C8911694B850004E3304 /* main.m in Sources */,
 				EC97C8951694B850004E3304 /* CRAppDelegate.m in Sources */,
 				EC97C8A11694B850004E3304 /* CRViewController.m in Sources */,
+				C127C3211698AD0D00A8EC44 /* CRFindPanoramaImages.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +303,7 @@
 				EC97C8A61694B850004E3304 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
