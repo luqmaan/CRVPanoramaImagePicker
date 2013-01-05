@@ -25,14 +25,14 @@
 /* Begin PBXFileReference section */
 		C127C31F1698AD0D00A8EC44 /* CRFindPanoramaImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFindPanoramaImages.h; sourceTree = "<group>"; };
 		C127C3201698AD0D00A8EC44 /* CRFindPanoramaImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRFindPanoramaImages.m; sourceTree = "<group>"; };
-		EC97C8801694B850004E3304 /* TestAssetLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAssetLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC97C8801694B850004E3304 /* PanoramaImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanoramaImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC97C8841694B850004E3304 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EC97C8861694B850004E3304 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EC97C8881694B850004E3304 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		EC97C88C1694B850004E3304 /* TestAssetLibrary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestAssetLibrary-Info.plist"; sourceTree = "<group>"; };
+		EC97C88C1694B850004E3304 /* PanoramaImagePicker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PanoramaImagePicker-Info.plist"; sourceTree = "<group>"; };
 		EC97C88E1694B850004E3304 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EC97C8901694B850004E3304 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EC97C8921694B850004E3304 /* TestAssetLibrary-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestAssetLibrary-Prefix.pch"; sourceTree = "<group>"; };
+		EC97C8921694B850004E3304 /* PanoramaImagePicker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PanoramaImagePicker-Prefix.pch"; sourceTree = "<group>"; };
 		EC97C8931694B850004E3304 /* CRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRAppDelegate.h; sourceTree = "<group>"; };
 		EC97C8941694B850004E3304 /* CRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CRAppDelegate.m; sourceTree = "<group>"; };
 		EC97C8961694B850004E3304 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		EC97C8811694B850004E3304 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EC97C8801694B850004E3304 /* TestAssetLibrary.app */,
+				EC97C8801694B850004E3304 /* PanoramaImagePicker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,10 +105,10 @@
 		EC97C88B1694B850004E3304 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EC97C88C1694B850004E3304 /* TestAssetLibrary-Info.plist */,
+				EC97C88C1694B850004E3304 /* PanoramaImagePicker-Info.plist */,
 				EC97C88D1694B850004E3304 /* InfoPlist.strings */,
 				EC97C8901694B850004E3304 /* main.m */,
-				EC97C8921694B850004E3304 /* TestAssetLibrary-Prefix.pch */,
+				EC97C8921694B850004E3304 /* PanoramaImagePicker-Prefix.pch */,
 				EC97C8961694B850004E3304 /* Default.png */,
 				EC97C8981694B850004E3304 /* Default@2x.png */,
 				EC97C89A1694B850004E3304 /* Default-568h@2x.png */,
@@ -119,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EC97C87F1694B850004E3304 /* TestAssetLibrary */ = {
+		EC97C87F1694B850004E3304 /* PanoramaImagePicker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EC97C8A41694B850004E3304 /* Build configuration list for PBXNativeTarget "TestAssetLibrary" */;
+			buildConfigurationList = EC97C8A41694B850004E3304 /* Build configuration list for PBXNativeTarget "PanoramaImagePicker" */;
 			buildPhases = (
 				EC97C87C1694B850004E3304 /* Sources */,
 				EC97C87D1694B850004E3304 /* Frameworks */,
@@ -131,9 +131,9 @@
 			);
 			dependencies = (
 			);
-			name = TestAssetLibrary;
+			name = PanoramaImagePicker;
 			productName = TestAssetLibrary;
-			productReference = EC97C8801694B850004E3304 /* TestAssetLibrary.app */;
+			productReference = EC97C8801694B850004E3304 /* PanoramaImagePicker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -146,7 +146,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = Createch;
 			};
-			buildConfigurationList = EC97C87A1694B850004E3304 /* Build configuration list for PBXProject "TestAssetLibrary" */;
+			buildConfigurationList = EC97C87A1694B850004E3304 /* Build configuration list for PBXProject "PanoramaImagePicker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -158,7 +158,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EC97C87F1694B850004E3304 /* TestAssetLibrary */,
+				EC97C87F1694B850004E3304 /* PanoramaImagePicker */,
 			);
 		};
 /* End PBXProject section */
@@ -266,9 +266,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TestAssetLibrary/TestAssetLibrary-Prefix.pch";
-				INFOPLIST_FILE = "TestAssetLibrary/TestAssetLibrary-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "TestAssetLibrary/PanoramaImagePicker-Prefix.pch";
+				INFOPLIST_FILE = "TestAssetLibrary/PanoramaImagePicker-Info.plist";
+				PRODUCT_NAME = PanoramaImagePicker;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -277,9 +277,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TestAssetLibrary/TestAssetLibrary-Prefix.pch";
-				INFOPLIST_FILE = "TestAssetLibrary/TestAssetLibrary-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "TestAssetLibrary/PanoramaImagePicker-Prefix.pch";
+				INFOPLIST_FILE = "TestAssetLibrary/PanoramaImagePicker-Info.plist";
+				PRODUCT_NAME = PanoramaImagePicker;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -287,7 +287,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EC97C87A1694B850004E3304 /* Build configuration list for PBXProject "TestAssetLibrary" */ = {
+		EC97C87A1694B850004E3304 /* Build configuration list for PBXProject "PanoramaImagePicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EC97C8A21694B850004E3304 /* Debug */,
@@ -296,7 +296,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EC97C8A41694B850004E3304 /* Build configuration list for PBXNativeTarget "TestAssetLibrary" */ = {
+		EC97C8A41694B850004E3304 /* Build configuration list for PBXNativeTarget "PanoramaImagePicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EC97C8A51694B850004E3304 /* Debug */,

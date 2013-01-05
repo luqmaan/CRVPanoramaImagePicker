@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TestAssetLibrary.xcodeproj">
+      location = "self:PanoramaImagePicker.xcodeproj">
    </FileRef>
 </Workspace>
