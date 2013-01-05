@@ -14,7 +14,7 @@
 
 @implementation CRViewController
 
-@synthesize library, assetsGroupById;
+@synthesize library, assetsGroupById, panoramaPhotos;
 
 - (void)viewDidLoad
 {
@@ -39,7 +39,11 @@
             
             NSLog(@"%u %@ %@", count, albumId, albumName);
             
-            [self doSomethingWithGroup:group];
+            [self findPanoramasInGroup:group
+                          withCallback:
+             ^(ALAssetsGroup *groupOfPanoramas) {
+                 [self presentPanoramasWithGroup:groupOfPanoramas];
+            }];
             
         }
     } failureBlock:^(NSError *error) {
@@ -48,33 +52,53 @@
     
 }
 
+- (void)presentPanoramasWithGroup:(ALAssetsGroup *) groupOfPanoramas
+{
+    NSLog(@"hai");
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)doSomethingWithGroup:(ALAssetsGroup *)group
+
+- (void)findPanoramasInGroup:(ALAssetsGroup *)group withCallback:(void(^)(ALAssetsGroup *groupOfPanoramas) )completion
 {
-    NSLog(@"wanna do something with grou: %@", group);
+    NSLog(@"wanna do something with group: %@", group);
     
     [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
         
-        NSLog(@"%u %@", index, result);
-        
-        UIImage *thumb = [UIImage imageWithCGImage:[result thumbnail]];
-        
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:thumb];
-        
-        CGRect frame = CGRectMake(index * 20, index * 30, 50, 60);
-        [imageView setFrame:frame];
-        
-        [[self view] addSubview:imageView];
-        
-//        [result valueForKey:@"URLs"];
-        
-//        UIImage *image = [UIImage i];
+        if (result != nil)
+        {
+                                    
+            NSDictionary *metadata = [[result defaultRepresentation] metadata];
+            
+            id customRendered = [[metadata objectForKey:@"{Exif}"] objectForKey:@"CustomRendered"];
+            
+            NSLog(@"%@", customRendered);
+            
+            if (customRendered)
+            {
+                [panoramaPhotos addAsset:result];
+                
+                UIImage *thumb = [UIImage imageWithCGImage:[result thumbnail]];
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:thumb];
+                
+                CGRect frame = CGRectMake(index * 20, index * 30, 50, 60);
+                [imageView setFrame:frame];
+                
+                [[self view] addSubview:imageView];
 
+            }
+        
+        }
+        else
+        {
+            completion(group);
+        }
+     
     }];
     
     

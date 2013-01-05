@@ -13,5 +13,6 @@
 
 @property (strong, nonatomic) ALAssetsLibrary *library;
 @property (strong, nonatomic) NSMutableDictionary *assetsGroupById;
+@property (strong, nonatomic) ALAssetsGroup *panoramaPhotos;
 
 @end
