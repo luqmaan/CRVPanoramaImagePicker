@@ -10,7 +10,7 @@
 
 @interface CRFindPanoramaImages ()
 
-- (void)findPanoramasInGroup:(ALAssetsGroup *)group withCallback:(void(^)(ALAssetRepresentation *panoramaImageRef))completion;
+- (void)findPanoramasInGroup:(ALAssetsGroup *)group withCallback:(void(^)(ALAsset *panoramaImageRef))completion;
 
 @end
 
@@ -25,7 +25,7 @@
     return self;
 }
 
-- (void)findPanoramaImagesAndPerformCallback:(void(^)(ALAssetRepresentation
+- (void)findPanoramaImagesAndPerformCallback:(void(^)(ALAsset
                                                       *panoramaImageRef))completion
 {
     
@@ -41,7 +41,7 @@
     }];
 }
 
-- (void)findPanoramasInGroup:(ALAssetsGroup *)group withCallback:(void(^)(ALAssetRepresentation *panoramaImageRef))completion
+- (void)findPanoramasInGroup:(ALAssetsGroup *)group withCallback:(void(^)(ALAsset *panoramaImageRef))completion
 {
     NSLog(@"wanna do something with group: %@", group);
     
@@ -60,7 +60,7 @@
                 
                 NSLog(@"Is custom rendered");
                 
-                completion(representation);
+                completion(result);
             }
             
         }        
