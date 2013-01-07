@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CRFindPanoramaImages.h"
+#import "CRVFindPanoramaImages.h"
 
 
 /* A custom Image Picker that searches for and presents only panorama images.

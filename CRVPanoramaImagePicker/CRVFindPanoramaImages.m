@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Createch. All rights reserved.
 //
 
-#import "CRFindPanoramaImages.h"
+#import "CRVFindPanoramaImages.h"
 
 @interface CRFindPanoramaImages ()
 

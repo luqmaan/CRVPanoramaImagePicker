@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C127C3211698AD0D00A8EC44 /* CRFindPanoramaImages.m in Sources */ = {isa = PBXBuildFile; fileRef = C127C3201698AD0D00A8EC44 /* CRFindPanoramaImages.m */; };
 		C127C348169B460900A8EC44 /* CRVPanoramaImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C127C346169B460900A8EC44 /* CRVPanoramaImagePicker.m */; };
 		C127C349169B460900A8EC44 /* CRVPanoramaImagePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = C127C347169B460900A8EC44 /* CRVPanoramaImagePicker.xib */; };
+		C127C34D169B469100A8EC44 /* CRVFindPanoramaImages.m in Sources */ = {isa = PBXBuildFile; fileRef = C127C34C169B469100A8EC44 /* CRVFindPanoramaImages.m */; };
 		EC97C8851694B850004E3304 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97C8841694B850004E3304 /* UIKit.framework */; };
 		EC97C8871694B850004E3304 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97C8861694B850004E3304 /* Foundation.framework */; };
 		EC97C8891694B850004E3304 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97C8881694B850004E3304 /* CoreGraphics.framework */; };
@@ -25,11 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C127C31F1698AD0D00A8EC44 /* CRFindPanoramaImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFindPanoramaImages.h; sourceTree = "<group>"; };
-		C127C3201698AD0D00A8EC44 /* CRFindPanoramaImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRFindPanoramaImages.m; sourceTree = "<group>"; };
 		C127C345169B460900A8EC44 /* CRVPanoramaImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRVPanoramaImagePicker.h; path = CRVPanoramaImagePicker/CRVPanoramaImagePicker.h; sourceTree = SOURCE_ROOT; };
 		C127C346169B460900A8EC44 /* CRVPanoramaImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRVPanoramaImagePicker.m; path = CRVPanoramaImagePicker/CRVPanoramaImagePicker.m; sourceTree = SOURCE_ROOT; };
 		C127C347169B460900A8EC44 /* CRVPanoramaImagePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CRVPanoramaImagePicker.xib; path = CRVPanoramaImagePicker/CRVPanoramaImagePicker.xib; sourceTree = SOURCE_ROOT; };
+		C127C34B169B469100A8EC44 /* CRVFindPanoramaImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRVFindPanoramaImages.h; path = CRVPanoramaImagePicker/CRVFindPanoramaImages.h; sourceTree = SOURCE_ROOT; };
+		C127C34C169B469100A8EC44 /* CRVFindPanoramaImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRVFindPanoramaImages.m; path = CRVPanoramaImagePicker/CRVFindPanoramaImages.m; sourceTree = SOURCE_ROOT; };
 		EC97C8801694B850004E3304 /* PanoramaImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanoramaImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC97C8841694B850004E3304 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EC97C8861694B850004E3304 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -67,8 +67,8 @@
 		C127C34A169B461100A8EC44 /* CRVPanoramaImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				C127C31F1698AD0D00A8EC44 /* CRFindPanoramaImages.h */,
-				C127C3201698AD0D00A8EC44 /* CRFindPanoramaImages.m */,
+				C127C34B169B469100A8EC44 /* CRVFindPanoramaImages.h */,
+				C127C34C169B469100A8EC44 /* CRVFindPanoramaImages.m */,
 				C127C345169B460900A8EC44 /* CRVPanoramaImagePicker.h */,
 				C127C346169B460900A8EC44 /* CRVPanoramaImagePicker.m */,
 				C127C347169B460900A8EC44 /* CRVPanoramaImagePicker.xib */,
@@ -204,8 +204,8 @@
 				EC97C8911694B850004E3304 /* main.m in Sources */,
 				EC97C8951694B850004E3304 /* CRAppDelegate.m in Sources */,
 				EC97C8A11694B850004E3304 /* CRViewController.m in Sources */,
-				C127C3211698AD0D00A8EC44 /* CRFindPanoramaImages.m in Sources */,
 				C127C348169B460900A8EC44 /* CRVPanoramaImagePicker.m in Sources */,
+				C127C34D169B469100A8EC44 /* CRVFindPanoramaImages.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
