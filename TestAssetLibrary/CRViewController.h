@@ -11,4 +11,8 @@
 
 @interface CRViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *selectedImage;
+
+- (IBAction)btnOpenImagePicker:(id)sender;
+
 @end

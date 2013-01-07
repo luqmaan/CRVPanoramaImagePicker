@@ -10,23 +10,29 @@
 
 @interface CRViewController ()
 
+@property (nonatomic) BOOL presentedImagePicker;
+
 @end
 
 @implementation CRViewController
 
+@synthesize presentedImagePicker, selectedImage;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    presentedImagePicker = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    CRVPanoramaImagePicker *panoramaImagePicker = [[CRVPanoramaImagePicker alloc] init];
-    [self presentViewController:panoramaImagePicker animated:YES completion:nil];
-    
-    [panoramaImagePicker setGotPanoramaImage:^(UIImage * image) {
-        NSLog(@"Got the image: %@", image);
-    }];
+    // prevent the image picker from appearing every time the view appears
+    if (!presentedImagePicker)
+    {
+        presentedImagePicker = YES;
+        
+        [self presentImagePicker];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +41,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)presentImagePicker
+{
+    CRVPanoramaImagePicker *panoramaImagePicker = [[CRVPanoramaImagePicker alloc] init];
+    
+    [self presentViewController:panoramaImagePicker animated:YES completion:nil];
+    
+    [panoramaImagePicker setGotPanoramaImage:^(UIImage * image) {
+        NSLog(@"Got the image: %@", image);
+        [selectedImage setImage:image];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
+
+- (IBAction)btnOpenImagePicker:(id)sender {
+    [self presentImagePicker];
+}
 @end
