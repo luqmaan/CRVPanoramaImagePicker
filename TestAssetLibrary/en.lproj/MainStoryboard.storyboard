@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="EAk-G7-X2A">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="5">
+        <scene sceneID="08n-25-oi1">
             <objects>
-                <viewController id="2" customClass="CRViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3" customClass="UIScrollView">
+                <viewController id="EAk-G7-X2A" customClass="CRViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vCG-4Q-TFv">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -27,31 +27,26 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="btnOpenImagePicker:" destination="2" eventType="touchUpInside" id="opB-CV-gWB"/>
+                                    <action selector="btnOpenImagePicker:" destination="EAk-G7-X2A" eventType="touchUpInside" id="6Bc-5B-gLT"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3OE-EJ-kKQ" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="6Fv-Kq-2T7"/>
-                            <constraint firstItem="3OE-EJ-kKQ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="169" id="B2K-qO-PYU"/>
-                            <constraint firstItem="iLP-Hv-ikx" firstAttribute="centerX" secondItem="3OE-EJ-kKQ" secondAttribute="centerX" type="default" id="RGE-BC-qQp"/>
-                            <constraint firstAttribute="bottom" secondItem="iLP-Hv-ikx" secondAttribute="bottom" constant="76" id="ZzL-R4-D3o"/>
-                            <constraint firstItem="3OE-EJ-kKQ" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="wF5-RM-cwJ"/>
+                            <constraint firstItem="3OE-EJ-kKQ" firstAttribute="top" secondItem="vCG-4Q-TFv" secondAttribute="top" constant="148" id="EKf-lG-XRn"/>
+                            <constraint firstItem="3OE-EJ-kKQ" firstAttribute="leading" secondItem="vCG-4Q-TFv" secondAttribute="leading" type="default" id="U6O-Mb-aDd"/>
+                            <constraint firstItem="iLP-Hv-ikx" firstAttribute="centerX" secondItem="3OE-EJ-kKQ" secondAttribute="centerX" type="default" id="ue1-la-7Km"/>
+                            <constraint firstItem="3OE-EJ-kKQ" firstAttribute="trailing" secondItem="vCG-4Q-TFv" secondAttribute="trailing" type="default" id="yeI-LJ-BRx"/>
+                            <constraint firstAttribute="bottom" secondItem="iLP-Hv-ikx" secondAttribute="bottom" constant="109" id="yjE-Gc-0ac"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                <size key="value" width="0.0" height="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
-                        <outlet property="selectedImage" destination="3OE-EJ-kKQ" id="vwj-9c-iac"/>
+                        <outlet property="selectedImage" destination="3OE-EJ-kKQ" id="JMX-J1-izO"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="drs-8A-RaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="339" y="-60"/>
+            <point key="canvasLocation" x="781" y="-60"/>
         </scene>
     </scenes>
     <classes>
