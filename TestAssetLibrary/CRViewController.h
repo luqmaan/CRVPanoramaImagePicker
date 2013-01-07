@@ -9,10 +9,25 @@
 #import <UIKit/UIKit.h>
 #import "CRFindPanoramaImages.h"
 
+
+/* A custom Image Picker that searches for and presents only panorama images.
+ *
+ * After initializing, you must set the callback for gotPanoramaImage.
+ *
+ * This isn't correct yet:
+ * [panoramaImagePicker setGotPanoramaImage:void(^gotPanoramaImage)(UIImage *panoramaImage)
+    {
+        NSLog("%@", panoramaImage);
+    }
+ *
+ */
+
 @interface CRViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) void(^gotPanoramaImage)(UIImage *panoramaImage);
 
-@property (nonatomic) CGSize scrollViewContentSize;
+
+- (void)handlePanoramaTap:(UIGestureRecognizer *)gestureRecognizer;
+
 
 @end
