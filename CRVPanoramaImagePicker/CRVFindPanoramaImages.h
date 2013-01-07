@@ -16,6 +16,8 @@
     NSMutableDictionary *assetsGroupById;
 }
 
+@property (nonatomic) BOOL disablePortraitImages;
+
 /**
  * Method name: findPanoramaImagesWithCallback
  * Description: Performs the specified callback on each image that is a panorama 

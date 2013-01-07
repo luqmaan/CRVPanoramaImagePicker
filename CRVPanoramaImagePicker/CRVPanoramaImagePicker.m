@@ -16,13 +16,14 @@
 
 @implementation CRVPanoramaImagePicker
 
-@synthesize scrollViewContentSize, gotPanoramaImage;
+@synthesize scrollViewContentSize, gotPanoramaImage, disablePortraitImages;
 
 - (id)init
 {
+    // If no nib is specified, use the default
     self = [super initWithNibName:@"CRVPanoramaImagePicker" bundle:nil];
     if (self) {
-        // Custom initialization
+        [self customInitialization];
     }
     return self;
 }
@@ -31,24 +32,35 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self customInitialization];
     }
     return self;
+}
+
+- (void)customInitialization
+{
+    disablePortraitImages = NO;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    NSLog(@"hello");
     
     CRFindPanoramaImages *panoramaImageFinder = [[CRFindPanoramaImages alloc] init];
+    
+    [panoramaImageFinder setDisablePortraitImages:disablePortraitImages];
     
     scrollViewContentSize = [[UIScreen mainScreen] bounds].size;
     
     __block NSInteger top = 0;
     __block CGFloat viewWidth = scrollViewContentSize.width;
-    __block CGRect buttonFrame = CGRectMake(viewWidth - 45, 15,35,35);
     
     [panoramaImageFinder findPanoramaImagesAndPerformCallback:^(ALAsset *panoramaImageRef) {
         
@@ -72,20 +84,10 @@
         [imageView setFrame:imageFrame];
         [[self view] addSubview:imageView];
         
-        // create the action button
-        UIButton *button  = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        buttonFrame.origin = CGPointMake(viewWidth - 45, (top + (height / 2)) - 17.5);
-        [button setFrame:buttonFrame];
-        [button addTarget:self
-                   action:@selector(chooseImage)
-         forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:button];
         
-        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                        action:@selector(handlePanoramaTap:)];
-        
+        // add the tap action
         [imageView setUserInteractionEnabled:YES];
-        
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanoramaTap:)];
         [imageView addGestureRecognizer:tapRecognizer];
         
         // update the size of the scrollview and the top position of the next image
@@ -96,14 +98,18 @@
     }];
     
 }
+
 - (void)handlePanoramaTap:(UIGestureRecognizer *)gr
 {
-    NSLog(@"recognized tap");
-    
     UIImageView *imageView = (UIImageView *)[gr view];
-    
     UIImage *image = [imageView image];
     
+    [self done:image];
+}
+
+
+- (void)done:(UIImage *)image
+{
     if (gotPanoramaImage != NULL)
     {
         gotPanoramaImage(image);
@@ -112,16 +118,6 @@
     {
         NSLog(@"Warning: gotPanoramaImage has not been set. No action to perform on the selected image.");
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-- (void)chooseImage
-{
-    NSLog(@"clicked on button");
 }
 
 @end

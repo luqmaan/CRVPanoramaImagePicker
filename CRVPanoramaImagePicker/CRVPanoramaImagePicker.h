@@ -25,6 +25,7 @@
 @interface CRVPanoramaImagePicker : UIViewController
 
 @property (strong, nonatomic) void(^gotPanoramaImage)(UIImage *panoramaImage);
+@property (nonatomic) BOOL disablePortraitImages;
 
 - (void)handlePanoramaTap:(UIGestureRecognizer *)gestureRecognizer;
 

@@ -16,11 +16,15 @@
 
 @implementation CRFindPanoramaImages
 
+@synthesize disablePortraitImages;
+
 - (NSObject *) init
 {
     NSLog(@"did init");
     
     library = [[ALAssetsLibrary alloc] init];
+    
+    disablePortraitImages = NO;
     
     return self;
 }
@@ -54,13 +58,23 @@
             NSDictionary *metadata = [representation metadata];
             
             id customRendered = [[metadata objectForKey:@"{Exif}"] objectForKey:@"CustomRendered"];
-
+            
             if (customRendered)
             {
-                
-                NSLog(@"Is custom rendered");
-                
-                completion(result);
+                if (disablePortraitImages)
+                {
+                    NSNumber *height = [metadata objectForKey:@"PixelHeight"];                    
+                    BOOL landscape = [height compare:[NSNumber numberWithInt:3500]] == NSOrderedAscending;
+                    
+                    if (landscape)
+                    {
+                        completion(result);
+                    }
+                }
+                else
+                {
+                    completion(result);
+                }
             }
             
         }        

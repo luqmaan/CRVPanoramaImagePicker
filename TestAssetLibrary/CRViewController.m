@@ -44,8 +44,10 @@
 - (void)presentImagePicker
 {
     CRVPanoramaImagePicker *panoramaImagePicker = [[CRVPanoramaImagePicker alloc] init];
+    [panoramaImagePicker setDisablePortraitImages:YES];
     
     [self presentViewController:panoramaImagePicker animated:YES completion:nil];
+    
     
     [panoramaImagePicker setGotPanoramaImage:^(UIImage * image) {
         NSLog(@"Got the image: %@", image);
