@@ -17,6 +17,7 @@
 }
 
 @property (nonatomic) BOOL disablePortraitImages;
+@property (nonatomic) BOOL stopFindingImages;
 
 /**
  * Method name: findPanoramaImagesWithCallback

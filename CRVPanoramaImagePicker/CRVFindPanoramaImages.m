@@ -16,7 +16,7 @@
 
 @implementation CRFindPanoramaImages
 
-@synthesize disablePortraitImages;
+@synthesize disablePortraitImages, stopFindingImages;
 
 - (NSObject *) init
 {
@@ -25,6 +25,7 @@
     library = [[ALAssetsLibrary alloc] init];
     
     disablePortraitImages = NO;
+    stopFindingImages = NO;
     
     return self;
 }
@@ -39,6 +40,7 @@
             [self findPanoramasInGroup:group
                           withCallback:completion];
         }
+        stop = &(stopFindingImages);
     } failureBlock:^(NSError *error) {
         NSLog(@"Failure: Could not enumerate groups.");
         NSLog(@"Error: %@", error);
@@ -82,6 +84,7 @@
                 }
             }
             
+            stop = &(stopFindingImages);
         }        
     }];
     

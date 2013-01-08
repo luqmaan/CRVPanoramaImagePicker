@@ -10,28 +10,37 @@
 
 @interface CRViewController ()
 
-@property (nonatomic) BOOL presentedImagePicker;
+@property (nonatomic) BOOL hasPresentedImagePicker; // not needed anymore, since picker doesn't open automatically
+@property (strong, nonatomic) CRVPanoramaImagePicker *panoramaImagePicker;
 
 @end
 
 @implementation CRViewController
 
-@synthesize presentedImagePicker, selectedImage;
+@synthesize hasPresentedImagePicker, selectedImage, panoramaImagePicker;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    presentedImagePicker = NO;
+    hasPresentedImagePicker = NO;
+    panoramaImagePicker = [[CRVPanoramaImagePicker alloc] init];
+    
+    [panoramaImagePicker setDisablePortraitImages:YES];
+    [panoramaImagePicker setGotPanoramaImage:^(UIImage * image) {
+        NSLog(@"Got the image: %@", image);
+        [selectedImage setImage:image];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     // prevent the image picker from appearing every time the view appears
-    if (!presentedImagePicker)
+    if (!hasPresentedImagePicker)
     {
-        presentedImagePicker = YES;
+        hasPresentedImagePicker = YES;
         
-        [self presentImagePicker];
+//        [self presentImagePicker];
     }
 }
 
@@ -43,17 +52,7 @@
 
 - (void)presentImagePicker
 {
-    CRVPanoramaImagePicker *panoramaImagePicker = [[CRVPanoramaImagePicker alloc] init];
-    
-    [panoramaImagePicker setDisablePortraitImages:NO];
-    [panoramaImagePicker setGotPanoramaImage:^(UIImage * image) {
-        NSLog(@"Got the image: %@", image);
-        [selectedImage setImage:image];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
     [self presentViewController:panoramaImagePicker animated:YES completion:nil];
-
 }
 
 - (IBAction)btnOpenImagePicker:(id)sender {

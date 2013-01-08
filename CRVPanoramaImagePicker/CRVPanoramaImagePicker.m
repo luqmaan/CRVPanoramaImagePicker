@@ -6,22 +6,26 @@
 //  Copyright (c) 2013 Createch. All rights reserved.
 //
 #import "CRVPanoramaImagePicker.h"
+#import "QuartzCore/CALayer.h"
+
 
 @interface CRVPanoramaImagePicker ()
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) UIView *mainView;
+@property (strong, nonatomic) UIScrollView *scrollView;
 @property (nonatomic) CGSize scrollViewContentSize;
+@property (strong, nonatomic) UIToolbar *toolBar;
+@property (strong, nonatomic) CRFindPanoramaImages *panoramaImageFinder;
 
 @end
 
 @implementation CRVPanoramaImagePicker
 
-@synthesize scrollViewContentSize, gotPanoramaImage, disablePortraitImages;
+@synthesize scrollView, mainView, toolBar, scrollViewContentSize, gotPanoramaImage, disablePortraitImages, panoramaImageFinder;
 
 - (id)init
 {
-    // If no nib is specified, use the default
-    self = [super initWithNibName:@"CRVPanoramaImagePicker" bundle:nil];
+    self = [super init];
     if (self) {
         [self customInitialization];
     }
@@ -53,14 +57,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    CRFindPanoramaImages *panoramaImageFinder = [[CRFindPanoramaImages alloc] init];
+    panoramaImageFinder = [[CRFindPanoramaImages alloc] init];
     
     [panoramaImageFinder setDisablePortraitImages:disablePortraitImages];
     
     scrollViewContentSize = [[UIScreen mainScreen] bounds].size;
     
-    __block NSInteger top = 0;
+    [self setUpViews];
+    
+    __block CGFloat margin = 10;
+    __block NSInteger scrollViewTop = toolBar.bounds.size.height + toolBar.bounds.origin.y + margin;
     __block CGFloat viewWidth = scrollViewContentSize.width;
+    __block CGFloat imageWidth = scrollViewContentSize.width - (margin * 2);
     
     [panoramaImageFinder findPanoramaImagesAndPerformCallback:^(ALAsset *panoramaImageRef) {
         
@@ -77,13 +85,15 @@
         CGSize dimensions = [[panoramaImageRef defaultRepresentation] dimensions];
         CGFloat aspectRatio = dimensions.height / dimensions.width ;
         CGFloat height = aspectRatio * viewWidth;
-        CGRect imageFrame = CGRectMake(0, top, viewWidth, height);
+        CGRect imageFrame = CGRectMake(10, scrollViewTop, imageWidth, height);
         NSLog(@"%@", NSStringFromCGRect(imageFrame));
         
         // show the thumbnail
         [imageView setFrame:imageFrame];
-        [[self view] addSubview:imageView];
+        [scrollView addSubview:imageView];
         
+        [[imageView layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
+        [[imageView layer] setBorderWidth:1];
         
         // add the tap action
         [imageView setUserInteractionEnabled:YES];
@@ -91,12 +101,53 @@
         [imageView addGestureRecognizer:tapRecognizer];
         
         // update the size of the scrollview and the top position of the next image
-        top += height;
-        scrollViewContentSize.height = top;
+        scrollViewTop += height + margin;
+        scrollViewContentSize.height = scrollViewTop;
         [[self scrollView] setContentSize:scrollViewContentSize];
-        
+                
     }];
     
+}
+
+- (void)setUpViews
+{
+    /* Set Up Views */
+    
+    mainView = [self view];
+    
+    scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [mainView addSubview:scrollView];
+    
+    toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, scrollViewContentSize.width, 44)];
+    
+    UIBarButtonItem *title = [[UIBarButtonItem alloc] initWithTitle:@"Select Panorama"
+                                                              style:UIBarButtonItemStylePlain
+                                                             target:nil
+                                                             action:nil];
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                            target:nil
+                                                                            action:nil];
+    UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                            target:self
+                                                                            action:@selector(handleCancel)];
+    [cancel setTintColor:[UIColor blueColor]];
+    
+    NSArray *items = [[NSArray alloc] initWithObjects:cancel, spacer, title, spacer, nil];
+    
+    [toolBar setItems:items];
+    [toolBar setUserInteractionEnabled:YES];
+    [toolBar setTintColor:[UIColor blackColor]];
+    [toolBar setTranslucent:YES];
+    
+    [mainView addSubview:toolBar];
+    
+}
+
+- (void)handleCancel
+{
+    NSLog(@"Cancelled");
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [panoramaImageFinder setStopFindingImages:YES];
 }
 
 - (void)handlePanoramaTap:(UIGestureRecognizer *)gr

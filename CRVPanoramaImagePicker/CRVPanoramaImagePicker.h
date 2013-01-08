@@ -28,5 +28,6 @@
 @property (nonatomic) BOOL disablePortraitImages;
 
 - (void)handlePanoramaTap:(UIGestureRecognizer *)gestureRecognizer;
+- (void)handleCancel;
 
 @end
