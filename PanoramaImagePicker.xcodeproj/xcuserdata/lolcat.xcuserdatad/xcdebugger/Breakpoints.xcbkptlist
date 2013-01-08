@@ -29,5 +29,18 @@
          landmarkName = "-findPanoramaImagesAndPerformCallback:"
          landmarkType = "4">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CRVPanoramaImagePicker/CRVFindPanoramaImages.h"
+         timestampString = "379378486.797095"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "33"
+         endingLineNumber = "33"
+         landmarkName = "-findPanoramaImagesWithCallback:withProgressCallback::"
+         landmarkType = "4">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

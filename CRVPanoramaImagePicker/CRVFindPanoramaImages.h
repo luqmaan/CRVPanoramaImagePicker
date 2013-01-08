@@ -26,8 +26,10 @@
  */
 - (void)findPanoramasInGroup:(ALAssetsGroup *)group
                 withCallback:(void(^)(ALAsset *panoramaImageRef))completion
+                  withProgressCallback:(void(^)(float progress))progressCallback
                     whenDone:(void(^)(void))doneFindingImages;
 
 - (void)findPanoramaImagesWithCallback:(void(^)(ALAsset *panoramaImageRef))completion
+                  withProgressCallback:(void(^)(float progress))progressCallback
                               WhenDone:(void(^)(void))doneFindingImages;
 @end

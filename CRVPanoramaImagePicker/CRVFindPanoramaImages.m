@@ -29,7 +29,9 @@
     return self;
 }
 
-- (void)findPanoramaImagesWithCallback:(void(^)(ALAsset *))completion WhenDone:(void (^)(void))doneFindingImages
+- (void)findPanoramaImagesWithCallback:(void(^)(ALAsset *panoramaImageRef))completion
+                  withProgressCallback:(void(^)(float progress))progressCallback
+                              WhenDone:(void(^)(void))doneFindingImages
 {
     
     [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
@@ -37,6 +39,7 @@
         {
             [self findPanoramasInGroup:group
                           withCallback:completion
+                  withProgressCallback:progressCallback
                               whenDone:doneFindingImages];
         }
         stop = &(stopFindingImages);
@@ -45,9 +48,9 @@
         NSLog(@"Error: %@", error);
     }];
 }
-
 - (void)findPanoramasInGroup:(ALAssetsGroup *)group
                 withCallback:(void(^)(ALAsset *panoramaImageRef))completion
+        withProgressCallback:(void(^)(float progress))progressCallback
                     whenDone:(void(^)(void))doneFindingImages
 {
     [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
@@ -79,17 +82,30 @@
                     if (isLandscape || (!disablePortraitImages && isPortrait))
                     {
 //                        NSLog(@"%@ %@ %f || %@ %@ %f || %f", height, [metadata objectForKey:@"PixelHeight"], h, width, [metadata objectForKey:@"PixelWidth"], w, r);
-                        completion(result);
+                        dispatch_sync(dispatch_get_main_queue(), ^{
+                            // This will be called on the main thread, so that
+                            // you can update the UI, for example.
+                            completion(result);
+                        });
                
                     }
                 }
             }
-            
             stop = &(stopFindingImages);
+            
+            // update progress
+            float progress = ((float)index) /[group numberOfAssets];
+            progressCallback(progress);
         }
         else
         {
-            doneFindingImages();
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                // This will be called on the main thread, so that
+                // you can update the UI, for example.
+                doneFindingImages();
+//                completion(result);
+            });
+
         }
     }];
     

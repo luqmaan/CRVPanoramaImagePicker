@@ -66,6 +66,7 @@
     
     [self setUpViews];
     hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [hud setMode:MBProgressHUDModeAnnularDeterminate];
     [hud setLabelText:@"Searching For Panoramas"];
     [hud setDetailsLabelText:@"In Camera Roll"];
     
@@ -75,12 +76,9 @@
         // No explicit autorelease pool needed here.
         // The code runs in background, not strangling
         // the main run loop.
+        [self openImagePicker];
         
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            // This will be called on the main thread, so that
-            // you can update the UI, for example.
-            [self openImagePicker];
-        });
+        
     });
     
     
@@ -132,10 +130,17 @@
 
     void(^doneFindingImages)(void) = ^(void) {
         NSLog(@"Done finding images");
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [hud hide:YES];
+    };
+    
+    void(^progressCallback)(float progress) = ^(float progress) {
+        NSLog(@"Progress: %f", progress);
+        [hud setProgress:progress];
     };
     
     [panoramaImageFinder findPanoramaImagesWithCallback:foundImageCallback
+                                   withProgressCallback:progressCallback
                                                WhenDone:doneFindingImages];
 
 }
