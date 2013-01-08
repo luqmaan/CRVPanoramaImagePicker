@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C127C348169B460900A8EC44 /* CRVPanoramaImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C127C346169B460900A8EC44 /* CRVPanoramaImagePicker.m */; };
 		C127C34D169B469100A8EC44 /* CRVFindPanoramaImages.m in Sources */ = {isa = PBXBuildFile; fileRef = C127C34C169B469100A8EC44 /* CRVFindPanoramaImages.m */; };
+		C1792CAC169CCF1B004C9836 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C1792CAB169CCF1B004C9836 /* MBProgressHUD.m */; };
 		EC97C8851694B850004E3304 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97C8841694B850004E3304 /* UIKit.framework */; };
 		EC97C8871694B850004E3304 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97C8861694B850004E3304 /* Foundation.framework */; };
 		EC97C8891694B850004E3304 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97C8881694B850004E3304 /* CoreGraphics.framework */; };
@@ -28,6 +29,8 @@
 		C127C346169B460900A8EC44 /* CRVPanoramaImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRVPanoramaImagePicker.m; path = CRVPanoramaImagePicker/CRVPanoramaImagePicker.m; sourceTree = SOURCE_ROOT; };
 		C127C34B169B469100A8EC44 /* CRVFindPanoramaImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRVFindPanoramaImages.h; path = CRVPanoramaImagePicker/CRVFindPanoramaImages.h; sourceTree = SOURCE_ROOT; };
 		C127C34C169B469100A8EC44 /* CRVFindPanoramaImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRVFindPanoramaImages.m; path = CRVPanoramaImagePicker/CRVFindPanoramaImages.m; sourceTree = SOURCE_ROOT; };
+		C1792CAA169CCF1B004C9836 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C1792CAB169CCF1B004C9836 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		EC97C8801694B850004E3304 /* PanoramaImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanoramaImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC97C8841694B850004E3304 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EC97C8861694B850004E3304 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,12 +68,31 @@
 		C127C34A169B461100A8EC44 /* CRVPanoramaImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				C1792CA8169CCF1B004C9836 /* libs */,
 				C127C34B169B469100A8EC44 /* CRVFindPanoramaImages.h */,
 				C127C34C169B469100A8EC44 /* CRVFindPanoramaImages.m */,
 				C127C345169B460900A8EC44 /* CRVPanoramaImagePicker.h */,
 				C127C346169B460900A8EC44 /* CRVPanoramaImagePicker.m */,
 			);
 			name = CRVPanoramaImagePicker;
+			sourceTree = "<group>";
+		};
+		C1792CA8169CCF1B004C9836 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				C1792CA9169CCF1B004C9836 /* MBProgressHUD */,
+			);
+			name = libs;
+			path = CRVPanoramaImagePicker/libs;
+			sourceTree = SOURCE_ROOT;
+		};
+		C1792CA9169CCF1B004C9836 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C1792CAA169CCF1B004C9836 /* MBProgressHUD.h */,
+				C1792CAB169CCF1B004C9836 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		EC97C8751694B850004E3304 = {
@@ -202,6 +224,7 @@
 				EC97C8A11694B850004E3304 /* CRViewController.m in Sources */,
 				C127C348169B460900A8EC44 /* CRVPanoramaImagePicker.m in Sources */,
 				C127C34D169B469100A8EC44 /* CRVFindPanoramaImages.m in Sources */,
+				C1792CAC169CCF1B004C9836 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

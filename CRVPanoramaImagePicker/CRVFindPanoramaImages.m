@@ -10,7 +10,6 @@
 
 @interface CRFindPanoramaImages ()
 
-- (void)findPanoramasInGroup:(ALAssetsGroup *)group withCallback:(void(^)(ALAsset *panoramaImageRef))completion;
 
 @end
 
@@ -30,15 +29,15 @@
     return self;
 }
 
-- (void)findPanoramaImagesAndPerformCallback:(void(^)(ALAsset
-                                                      *panoramaImageRef))completion
+- (void)findPanoramaImagesWithCallback:(void(^)(ALAsset *))completion WhenDone:(void (^)(void))doneFindingImages
 {
     
     [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         if (group != nil)
         {
             [self findPanoramasInGroup:group
-                          withCallback:completion];
+                          withCallback:completion
+                              whenDone:doneFindingImages];
         }
         stop = &(stopFindingImages);
     } failureBlock:^(NSError *error) {
@@ -47,8 +46,10 @@
     }];
 }
 
-- (void)findPanoramasInGroup:(ALAssetsGroup *)group withCallback:(void(^)(ALAsset *panoramaImageRef))completion
-{    
+- (void)findPanoramasInGroup:(ALAssetsGroup *)group
+                withCallback:(void(^)(ALAsset *panoramaImageRef))completion
+                    whenDone:(void(^)(void))doneFindingImages
+{
     [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
         if (result != nil)
         {
@@ -85,11 +86,14 @@
             }
             
             stop = &(stopFindingImages);
-        }        
+        }
+        else
+        {
+            doneFindingImages();
+        }
     }];
     
     
 }
-
 
 @end

@@ -24,7 +24,10 @@
  * Description: Performs the specified callback on each image that is a panorama 
  * Parameters: A callback that recevies a UIImage
  */
-- (void)findPanoramaImagesAndPerformCallback:(void(^)(ALAsset
-                                                      *panoramaImageRef))completion;
+- (void)findPanoramasInGroup:(ALAssetsGroup *)group
+                withCallback:(void(^)(ALAsset *panoramaImageRef))completion
+                    whenDone:(void(^)(void))doneFindingImages;
 
+- (void)findPanoramaImagesWithCallback:(void(^)(ALAsset *panoramaImageRef))completion
+                              WhenDone:(void(^)(void))doneFindingImages;
 @end

@@ -16,12 +16,13 @@
 @property (nonatomic) CGSize scrollViewContentSize;
 @property (strong, nonatomic) UIToolbar *toolBar;
 @property (strong, nonatomic) CRFindPanoramaImages *panoramaImageFinder;
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
 
 @implementation CRVPanoramaImagePicker
 
-@synthesize scrollView, mainView, toolBar, scrollViewContentSize, gotPanoramaImage, disablePortraitImages, panoramaImageFinder;
+@synthesize scrollView, mainView, toolBar, scrollViewContentSize, gotPanoramaImage, disablePortraitImages, panoramaImageFinder, hud;
 
 - (id)init
 {
@@ -64,13 +65,35 @@
     scrollViewContentSize = [[UIScreen mainScreen] bounds].size;
     
     [self setUpViews];
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [hud setLabelText:@"Searching For Panoramas"];
+    [hud setDetailsLabelText:@"In Camera Roll"];
     
+    // TODO: See if this can be better implemented within the actual image finder.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // http://stackoverflow.com/questions/2708776/async-call-objective-c-iphone
+        // No explicit autorelease pool needed here.
+        // The code runs in background, not strangling
+        // the main run loop.
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            // This will be called on the main thread, so that
+            // you can update the UI, for example.
+            [self openImagePicker];
+        });
+    });
+    
+    
+}
+
+-(void)openImagePicker
+{
     __block CGFloat margin = 10;
     __block NSInteger scrollViewTop = toolBar.bounds.size.height + toolBar.bounds.origin.y + margin;
     __block CGFloat viewWidth = scrollViewContentSize.width;
     __block CGFloat imageWidth = scrollViewContentSize.width - (margin * 2);
     
-    [panoramaImageFinder findPanoramaImagesAndPerformCallback:^(ALAsset *panoramaImageRef) {
+    void(^foundImageCallback)(ALAsset *panoramaImageRef) = ^(ALAsset *panoramaImageRef) {
         
         /*  The call to get the image out of the defaultRepresentation is very slow.
          Fast: [panoramaImageRef aspectRatioThumbnail]
@@ -104,17 +127,34 @@
         scrollViewTop += height + margin;
         scrollViewContentSize.height = scrollViewTop;
         [[self scrollView] setContentSize:scrollViewContentSize];
-                
-    }];
+        
+    };
+
+    void(^doneFindingImages)(void) = ^(void) {
+        NSLog(@"Done finding images");
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    };
     
+    [panoramaImageFinder findPanoramaImagesWithCallback:foundImageCallback
+                                               WhenDone:doneFindingImages];
+
 }
 
+
+
 - (void)setUpViews
-{
-    /* Set Up Views */
-    
+{    
     mainView = [self view];
+    CGRect screenBounds = mainView.bounds;
+    CGFloat screenWidth = mainView.bounds.size.width;
+    CGFloat screenHeight = mainView.bounds.size.height;
     
+    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    [activityIndicatorView setCenter:CGPointMake(screenWidth/2.0, screenHeight/2.0)];
+    [activityIndicatorView startAnimating];
+    [mainView addSubview:activityIndicatorView];
+        
     scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [mainView addSubview:scrollView];
     
@@ -140,6 +180,8 @@
     [toolBar setTranslucent:YES];
     
     [mainView addSubview:toolBar];
+    
+    
     
 }
 
