@@ -3,8 +3,7 @@ CRVPanoramaImagePicker
 
 A custom image picker designed for picking Panorama images in iOS6.
 
-![](https://raw.github.com/createch/CRVPanoramaImagePicker/master/Screenshots/loading.png) &nbsp; 
-![](https://raw.github.com/createch/CRVPanoramaImagePicker/master/Screenshots/picker.png)
+<span style="border:1px solid #ddd; border-radius: 3px;">![](https://raw.github.com/createch/CRVPanoramaImagePicker/master/Screenshots/loading.png)</span> &nbsp; <span style="border:1px solid #ddd; border-radius: 3px;">!![](https://raw.github.com/createch/CRVPanoramaImagePicker/master/Screenshots/picker.png)</span>
 
 Usage
 --
