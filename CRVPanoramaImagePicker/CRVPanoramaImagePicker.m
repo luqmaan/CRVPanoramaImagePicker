@@ -66,8 +66,8 @@
         
         /*  The call to get the image out of the defaultRepresentation is very slow.
          Fast: [panoramaImageRef aspectRatioThumbnail]
-         Slower: [panoramaImageRef defaultRepresentation] fullScreenImage]
-         Slowest: [panoramaImageRef defaultRepresentation] fullResolutionImage]
+         Slower: [[panoramaImageRef defaultRepresentation] fullScreenImage]
+         Slowest: [[panoramaImageRef defaultRepresentation] fullResolutionImage]
          */
         // create the thumbnail and image view
         UIImage *thumb = [UIImage imageWithCGImage:[[panoramaImageRef defaultRepresentation] fullScreenImage]];

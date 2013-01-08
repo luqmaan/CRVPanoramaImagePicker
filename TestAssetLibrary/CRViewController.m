@@ -44,16 +44,16 @@
 - (void)presentImagePicker
 {
     CRVPanoramaImagePicker *panoramaImagePicker = [[CRVPanoramaImagePicker alloc] init];
-    [panoramaImagePicker setDisablePortraitImages:YES];
     
-    [self presentViewController:panoramaImagePicker animated:YES completion:nil];
-    
-    
+    [panoramaImagePicker setDisablePortraitImages:NO];
     [panoramaImagePicker setGotPanoramaImage:^(UIImage * image) {
         NSLog(@"Got the image: %@", image);
         [selectedImage setImage:image];
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
+    
+    [self presentViewController:panoramaImagePicker animated:YES completion:nil];
+
 }
 
 - (IBAction)btnOpenImagePicker:(id)sender {

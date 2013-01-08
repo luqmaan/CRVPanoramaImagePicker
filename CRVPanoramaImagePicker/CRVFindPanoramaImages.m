@@ -46,34 +46,39 @@
 }
 
 - (void)findPanoramasInGroup:(ALAssetsGroup *)group withCallback:(void(^)(ALAsset *panoramaImageRef))completion
-{
-    NSLog(@"wanna do something with group: %@", group);
-    
+{    
     [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
         if (result != nil)
         {
             
             ALAssetRepresentation *representation = [result defaultRepresentation];
-            
             NSDictionary *metadata = [representation metadata];
             
-            id customRendered = [[metadata objectForKey:@"{Exif}"] objectForKey:@"CustomRendered"];
+//          NSLog(@"%@", metadata);
+
+            id PixelHeight = [metadata objectForKey:@"PixelHeight"];
             
-            if (customRendered)
+            if (PixelHeight != nil)
             {
-                if (disablePortraitImages)
+                NSNumber *height = PixelHeight;
+                NSNumber *width = [metadata objectForKey:@"PixelWidth"];
+                
+                float h = [height floatValue];
+                float w = [width floatValue];
+                
+                if (w > 3500 || (!disablePortraitImages && h > 3500))
                 {
-                    NSNumber *height = [metadata objectForKey:@"PixelHeight"];                    
-                    BOOL landscape = [height compare:[NSNumber numberWithInt:3500]] == NSOrderedAscending;
+                    float r = w / h;
                     
-                    if (landscape)
+                    BOOL isLandscape = r > 2.5;
+                    BOOL isPortrait = r < 0.55;
+                    
+                    if (isLandscape || (!disablePortraitImages && isPortrait))
                     {
+//                        NSLog(@"%@ %@ %f || %@ %@ %f || %f", height, [metadata objectForKey:@"PixelHeight"], h, width, [metadata objectForKey:@"PixelWidth"], w, r);
                         completion(result);
+               
                     }
-                }
-                else
-                {
-                    completion(result);
                 }
             }
             
