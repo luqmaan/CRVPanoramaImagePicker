@@ -25,7 +25,7 @@
     hasPresentedImagePicker = NO;
     panoramaImagePicker = [[CRVPanoramaImagePicker alloc] init];
     
-    [panoramaImagePicker setDisablePortraitImages:NO];
+    [panoramaImagePicker setDisablePortraitImages:YES];
     [panoramaImagePicker setGotPanoramaImage:^(UIImage * image) {
         NSLog(@"Got the image: %@", image);
         [selectedImage setImage:image];

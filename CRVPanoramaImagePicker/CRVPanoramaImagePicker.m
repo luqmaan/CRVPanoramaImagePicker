@@ -186,8 +186,6 @@
     
     [mainView addSubview:toolBar];
     
-    
-    
 }
 
 - (void)handleCancel
